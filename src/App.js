@@ -1,21 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Header from "./components/molecules/Header/header";
+
+import "./App.css";
+
+import guides from "./containers/Gudies/guides";
+import posts from "./containers/Post/post";
+
 
 class App extends Component {
+  static contextTypes = {
+    store: PropTypes.object.isRequired
+  };
+
+  componentWillMount() {
+    console.log(this.props.loadGuides);
+    this.props.loadGuides();
+    this.props.loadPost();
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Header />
+        {this.props.children}
       </div>
     );
   }
 }
 
-export default App;
+export default posts(guides(App));
