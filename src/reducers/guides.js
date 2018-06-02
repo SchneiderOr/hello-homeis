@@ -1,5 +1,5 @@
 import { handle } from "redux-pack";
-
+import { endpoints } from "../config";
 const LOAD_POPULAR_GUIDES = "LOAD_POPULAR_GUIDES";
 const initialState = {
   isLoading: false,
@@ -29,8 +29,6 @@ export default function(state = initialState, action) {
 export function loadGuides() {
   return {
     type: LOAD_POPULAR_GUIDES,
-    promise: fetch(
-      "https://gist.githubusercontent.com/asafda/cf5d8a9183a296142019bb71bc6872e6/raw/bf7a547373de15074c7cb5309ec1d36f477dbb2e/getPosts.js"
-    ).then(res => res.json())
+    promise: fetch(endpoints.guidesList).then(res => res.json())
   };
 }

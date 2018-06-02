@@ -1,6 +1,6 @@
 import { handle } from "redux-pack";
-
-const LOAD_GUIDE_POST = "LOAD_GUIDE_POST";
+import { endpoints } from "../config";
+const LOAD_GUIDE = "LOAD_GUIDE";
 const initialState = {
   isLoading: false,
   error: null
@@ -9,7 +9,7 @@ const initialState = {
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case LOAD_GUIDE_POST:
+    case LOAD_GUIDE:
       return handle(state, action, {
         start: prevState => ({
           ...prevState,
@@ -26,11 +26,9 @@ export default function(state = initialState, action) {
   }
 }
 
-export function loadPost() {
+export function loadGuide() {
   return {
-    type: LOAD_GUIDE_POST,
-    promise: fetch(
-      "https://gist.githubusercontent.com/asafda/487838553bd12070f46acb028e69a4ac/raw/c6de80cde02ca17231ce68992a5311e2b358aa30/getPost.js"
-    ).then(res => res.json())
+    type: LOAD_GUIDE,
+    promise: fetch(endpoints.guide).then(res => res.json())
   };
 }

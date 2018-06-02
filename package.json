@@ -3,14 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^1.1.0",
+    "date-fns": "^2.0.0-alpha.9",
     "history": "^4.7.2",
     "node-sass-chokidar": "0.0.3",
     "normalizr": "^3.2.4",
     "npm-run-all": "^4.1.2",
+    "polished": "^1.9.2",
     "ramda": "^0.25.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-flexboxgrid": "^1.0.1",
+    "react-html-parser": "^2.0.2",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
@@ -22,7 +26,9 @@
     "redux-logger": "^3.0.6",
     "redux-pack": "^0.1.5",
     "redux-promise": "^0.6.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "storybook-react-router": "^1.0.1",
+    "styled-components": "^3.3.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
@@ -32,6 +38,13 @@
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^3.4.6",
+    "@storybook/addon-links": "^3.4.6",
+    "@storybook/react": "^3.4.6"
   }
 }

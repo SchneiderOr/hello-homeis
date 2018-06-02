@@ -1,28 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import "./index.css";
-import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
-
 import { ConnectedRouter } from "react-router-redux";
+import { Route, Switch } from "react-router";
 
 import { Provider } from "react-redux";
 import configureStore, { history } from "./store/create";
-import { Route } from "react-router";
+
+import App from "./App";
+import Home from "./routes/Home";
+import NotFound from "./components/NotFound";
+
+import registerServiceWorker from "./registerServiceWorker";
+
+import "./vars/main.css";
+
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* ConnectedRouter will use the store from Provider automatically */}
     <ConnectedRouter history={history}>
-      <Route component={App}>
-        {/*<Route exact path="/" component={Home} />*/}
-        {/*<Route path="/about" component={About} />
-          <Route path="/topics" component={Topics} />*/}
-      </Route>
+      <App>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route component={NotFound} />
+        </Switch>
+      </App>
     </ConnectedRouter>
   </Provider>,
   document.getElementById("root")
 );
+
 registerServiceWorker();

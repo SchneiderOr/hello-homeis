@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import post from "./post";
+import guide from "./guide";
 import guides from "./guides";
 const rootReducer = combineReducers({
-  post,
+  guide,
   guides
 });
 
