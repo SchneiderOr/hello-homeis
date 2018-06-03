@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import * as R from "ramda";
 
+import { Col, Row } from "react-styled-flexboxgrid";
+
 import {
   Author,
   Title,
@@ -11,7 +13,6 @@ import {
   Timestemp,
   CreatorBar
 } from "./style";
-
 const NoResult = props => <div>No Guides were found...</div>;
 
 const Guide = props => {
@@ -21,7 +22,7 @@ const Guide = props => {
   if (!R.isNil(data)) {
     const { avatar, name, eventTime, image, title, body } = data;
     return (
-      <div style={{ maxWidth: 480 }}>
+      <div>
         <div style={{ display: "flex", alignItems: "center" }}>
           <Image src={avatar} size="40px" radius="33%" />
           <CreatorBar>
@@ -29,7 +30,7 @@ const Guide = props => {
             <Timestemp>{eventTime}</Timestemp>
           </CreatorBar>
         </div>
-        <div style={{ display: "flex", height: 200 }}>
+        <div style={{ display: "flex", height: "auto" }}>
           <Image src={image} radius="16px" />
         </div>
         <div style={{ display: "flex" }}>

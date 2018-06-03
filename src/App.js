@@ -6,8 +6,8 @@ import { Grid as BaseGrid } from "react-styled-flexboxgrid";
 import Header from "./components/Header/header";
 import Seperator from "./components/Separator/separator";
 
-const MainGrid = styled(BaseGrid)`padding: 32px 96px;`;
-const HeaderGrid = styled(BaseGrid)`padding: 32px 96px;`;
+const MainGrid = styled(BaseGrid)`padding: 2rem 6rem;`;
+const HeaderGrid = styled(BaseGrid)`padding: 2rem 6rem;`;
 class App extends Component {
   static contextTypes = {
     store: PropTypes.object.isRequired

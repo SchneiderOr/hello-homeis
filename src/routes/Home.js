@@ -6,8 +6,8 @@ import Guide from "../containers/guide";
 import PopularGuides from "../containers/guides";
 
 export default props => (
-  <Row>
-    <Col xs={12} md={8}>
+  <Row between={"xs"}>
+    <Col xs={12} md={6}>
       <Guide />
     </Col>
     <Col xs={12} md={4}>

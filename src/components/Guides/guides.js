@@ -7,9 +7,25 @@ import { Col, Row } from "react-styled-flexboxgrid";
 import Seperator from "../Separator/separator";
 import Tag from "../Tag/tag";
 
-import { Title, SubjectTitle, Author } from "./style";
+import { GuideContainer, Title, SubjectTitle, Author } from "./style";
 const NoResult = props => <div>No Guides were found...</div>;
 
+const Guide = ({ tags, name, image, title }) => (
+  <Col>
+    <Row>
+      <GuideContainer>
+        <SubjectTitle>{title}</SubjectTitle>
+        {tags.map((tag, index) => (
+          <Tag last={R.length(tags) === index + 1} key={index} data={tag} />
+        ))}
+        <Author> By {name}</Author>
+      </GuideContainer>
+    </Row>
+    <Row>
+      <Seperator />
+    </Row>
+  </Col>
+);
 const Guides = props => {
   const { isLoading, data } = props;
   if (isLoading) return <div>loading...</div>;
@@ -20,26 +36,7 @@ const Guides = props => {
           <Title>Popular Guides</Title>
         </Col>
         <Seperator />
-        <Col>
-          {data.map(({ tags, name, image, title }) => (
-            <div style={{ margin: "32px 0" }}>
-              <div>
-                <SubjectTitle>{title}</SubjectTitle>
-              </div>
-              <div style={{ display: "flex" }}>
-                {tags.map((tag, index) => (
-                  <Tag
-                    last={R.length(tags) === index + 1}
-                    key={index}
-                    data={tag}
-                  />
-                ))}
-              </div>
-              <Author> By {name}</Author>
-              <Seperator />
-            </div>
-          ))}
-        </Col>
+        {data.map(Guide)}
       </div>
     );
   }
