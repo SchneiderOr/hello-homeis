@@ -9,6 +9,7 @@ import { bindActionCreators } from "redux";
 import { loadGuide } from "../reducers/guide";
 import Guide from "../components/Guide/guide";
 
+// Format and pre-process the guide object (should be made on the server...)
 const getGuideData = state => {
   const guide = R.path(["guide", "payload", "data", "post"], state);
   if (guide) {

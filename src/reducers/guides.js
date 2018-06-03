@@ -1,6 +1,7 @@
 import { handle } from "redux-pack";
 import { endpoints } from "../config";
-const LOAD_POPULAR_GUIDES = "LOAD_POPULAR_GUIDES";
+const LOAD_GUIDES = "LOAD_GUIDES";
+
 const initialState = {
   isLoading: false,
   error: null
@@ -9,7 +10,7 @@ const initialState = {
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case LOAD_POPULAR_GUIDES:
+    case LOAD_GUIDES:
       return handle(state, action, {
         start: prevState => ({
           ...prevState,
@@ -28,7 +29,7 @@ export default function(state = initialState, action) {
 
 export function loadGuides() {
   return {
-    type: LOAD_POPULAR_GUIDES,
+    type: LOAD_GUIDES,
     promise: fetch(endpoints.guidesList).then(res => res.json())
   };
 }

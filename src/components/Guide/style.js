@@ -10,8 +10,7 @@ export const SubjectTitle = styled.h2`
   margin: 1rem 0.25rem 0.5rem;
 `;
 
-export const Paragraph = styled.p`
-  font-size: ${({ theme, size }) => size || ".75rem"};
+export const Content = styled.div`
   color: ${({ theme }) => theme.colors.blue};
 `;
 

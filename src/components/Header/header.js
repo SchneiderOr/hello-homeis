@@ -1,12 +1,13 @@
 import React from "react";
+
 import { navigation } from "../../config";
-import Link from "../Link/link";
+
 import Logo from "../Logo/logo";
 
-import { Header } from "./style";
+import { Link, Header } from "./style";
 
 const nav = navigation.map(({ to, label, ...rest }) => (
-  <Link key={label} to={to} {...rest} innerStyle={{ padding: "16px" }}>
+  <Link key={label} to={to} {...rest}>
     {label}
   </Link>
 ));

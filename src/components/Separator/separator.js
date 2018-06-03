@@ -8,5 +8,5 @@ export default styled.span`
   width: ${({ width }) => width || "100%"};
   height: ${({ height }) => height || "1px"};
   margin: 0.5rem 0;
-  ${props => props.innerStyle};
 `;
+  

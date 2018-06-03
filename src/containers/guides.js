@@ -7,6 +7,7 @@ import { bindActionCreators } from "redux";
 import { loadGuides } from "../reducers/guides";
 import Guides from "../components/Guides/guides";
 
+// Format and pre-process the guides object (should be made on the server...)
 const getGuidesData = state => {
   const guides = R.path(["guides", "payload", "data"], state);
   if (guides) {
@@ -20,7 +21,7 @@ const getGuidesData = state => {
       guides
     );
   }
-  return {};
+  return [];
 };
 
 export default compose(

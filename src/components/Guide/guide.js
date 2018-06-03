@@ -5,7 +5,7 @@ import * as R from "ramda";
 
 import { Col, Row } from "react-styled-flexboxgrid";
 
-import { Author, Image, Paragraph, SubjectTitle, Timestemp } from "./style";
+import { Author, Image, Content, SubjectTitle, Timestemp } from "./style";
 const NoResult = props => <div>No Guides were found...</div>;
 
 const Guide = props => {
@@ -35,7 +35,7 @@ const Guide = props => {
         </Row>
 
         <Row>
-          <Paragraph>{body}</Paragraph>
+          <Content>{body}</Content>
         </Row>
       </Col>
     );

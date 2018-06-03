@@ -18,5 +18,4 @@ export default styled(RouterLink)`
   text-decoration: none;
   font-weight: bold;
   ${setLinkColor};
-  ${props => props.innerStyle};
 `;

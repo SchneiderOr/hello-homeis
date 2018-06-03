@@ -9,7 +9,7 @@ import configureStore, { history } from "./store/create";
 
 import App from "./App";
 import Home from "./routes/Home";
-import NotFound from "./components/NotFound";
+import NotFound from "./routes/NotFound";
 
 import registerServiceWorker from "./registerServiceWorker";
 

@@ -8,19 +8,13 @@ import Image from "../Image/image";
 import Seperator from "../Separator/separator";
 import Tag from "../Tag/tag";
 
-import {
-  
-  GuideContainer,
-  Title,
-  SubjectTitle,
-  Author
-} from "./style";
+import { GuideContainer, Title, SubjectTitle, Author } from "./style";
 
 const NoResult = props => <div>No Guides were found...</div>;
 const Loading = props => <div>Loading...</div>;
 
-const Guide = ({ avatar, tags, name, image, title }) => (
-  <Col>
+const Guide = ({ avatar, tags, name, image, title }, index) => (
+  <Col key={index}>
     <Row>
       <GuideContainer>
         <Col xs={9}>
@@ -38,7 +32,6 @@ const Guide = ({ avatar, tags, name, image, title }) => (
     </Row>
   </Col>
 );
-
 
 const Guides = props => {
   const { isLoading, data } = props;

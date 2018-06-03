@@ -4,10 +4,11 @@ import styled from "styled-components";
 import { Grid as BaseGrid } from "react-styled-flexboxgrid";
 
 import Header from "./components/Header/header";
+import Footer from "./components/Footer/footer";
 import Seperator from "./components/Separator/separator";
 
-const MainGrid = styled(BaseGrid)`padding: 2rem 6rem;`;
-const HeaderGrid = styled(BaseGrid)`padding: 2rem 6rem;`;
+const Grid = styled(BaseGrid)`padding: 2rem 6rem;`;
+
 class App extends Component {
   static contextTypes = {
     store: PropTypes.object.isRequired
@@ -16,11 +17,17 @@ class App extends Component {
   render() {
     return (
       <div>
-        <HeaderGrid>
+        <Grid>
           <Header />
-        </HeaderGrid>
+        </Grid>
+
         <Seperator height="1px" />
-        <MainGrid>{this.props.children}</MainGrid>
+        <Grid>{this.props.children}</Grid>
+
+        <Seperator height="1px" />
+        <Grid>
+          <Footer />
+        </Grid>
       </div>
     );
   }
