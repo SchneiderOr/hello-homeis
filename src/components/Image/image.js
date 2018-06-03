@@ -1,6 +1,5 @@
-import React from "react";
 import styled, { css } from "styled-components";
-
+import { lighten } from "polished";
 const calculateSize = css`
   width: ${props => props.size || props.width};
   height: ${props => props.size || props.height};
@@ -8,6 +7,11 @@ const calculateSize = css`
 
 export default styled.img`
   ${calculateSize};
+  ${({ fit }) => fit && "object-fit: cover;"};
   border-radius: ${props => props.radius};
-  background-size: contain;
+  background: ${({ theme, src }) => {
+    if (!src) {
+      return lighten(0.35, theme.colors.b60);
+    }
+  }};
 `;

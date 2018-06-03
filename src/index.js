@@ -16,7 +16,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import { ThemeProvider } from "styled-components";
 
 import theme from "./config/theme";
-import globalStyles from "./config/base-style";
+import "./config/base-style";
 
 const store = configureStore();
 

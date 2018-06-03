@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { lighten, darken } from "polished";
+
 export const GuideContainer = styled.div`
-  width: 100%;  
+  display: flex;
+  width: 100%;
   padding: 1rem;
   transition: background 0.125s linear;
   background: white;

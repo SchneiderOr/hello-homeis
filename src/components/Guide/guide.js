@@ -5,73 +5,45 @@ import * as R from "ramda";
 
 import { Col, Row } from "react-styled-flexboxgrid";
 
-import {
-  Author,
-  Title,
-  Image,
-  Paragraph,
-  Timestemp,
-  CreatorBar
-} from "./style";
+import { Author, Image, Paragraph, SubjectTitle, Timestemp } from "./style";
 const NoResult = props => <div>No Guides were found...</div>;
 
 const Guide = props => {
   const { isLoading, data } = props;
 
   if (isLoading) return <div>loading...</div>;
-  if (!R.isNil(data)) {
+  if (!R.isNil(data) && !R.isEmpty(data)) {
     const { avatar, name, eventTime, image, title, body } = data;
     return (
-      <div>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Image src={avatar} size="40px" radius="33%" />
-          <CreatorBar>
+      <Col>
+        <Row middle="xs">
+          <Col>
+            <Image src={avatar} size="2.5rem" radius="33%" />
+          </Col>
+          <Col>
             <Author>{name}</Author>
             <Timestemp>{eventTime}</Timestemp>
-          </CreatorBar>
-        </div>
-        <div style={{ display: "flex", height: "auto" }}>
-          <Image src={image} radius="16px" />
-        </div>
-        <div style={{ display: "flex" }}>
-          <Title>{title}</Title>
-        </div>
-        <div style={{ display: "flex" }}>
+          </Col>
+        </Row>
+
+        <Row>
+          <Image src={image} width="100%" height="200" radius="1rem" fit />
+        </Row>
+
+        <Row>
+          <SubjectTitle>{title}</SubjectTitle>
+        </Row>
+
+        <Row>
           <Paragraph>{body}</Paragraph>
-        </div>
-      </div>
+        </Row>
+      </Col>
     );
-    // return (
-    //   <Card className={styles.card}>
-    //     <CardHeader
-    //       avatar={
-    //         <Avatar
-    //           src="https://material-ui.com/static/images/uxceo-128.jpg"
-    //           aria-label="Recipe"
-    //           className={styles.avatar}
-    //           size={32}
-    //         >
-    //           R
-    //         </Avatar>
-    //       }
-    //       title={name}
-    //       subheader={eventTime}
-    //     />
-    //     <CardMedia className={styles.media} image={image} />
-    //     <CardContent>
-    //       <Typography component="p">{title}</Typography>
-    //     </CardContent>
-    //     <CardContent>
-    //       <Typography paragraph>{body}</Typography>
-    //     </CardContent>
-    //   </Card>
-    // );
   }
   return <NoResult />;
 };
 
 Guide.propTypes = {
-  // styles: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired
 };

@@ -1,7 +1,6 @@
 import { compose, lifecycle } from "recompose";
 import * as R from "ramda";
 
-import parse from "react-html-parser";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -11,11 +10,10 @@ import Guides from "../components/Guides/guides";
 const getGuidesData = state => {
   const guides = R.path(["guides", "payload", "data"], state);
   if (guides) {
-    console.log(guides);
     return R.map(
       guide => ({
+        image: R.path(["actor", "media", "thumbnail"], guide), // Fake it from avatar since we dont have images attached to the actual object
         name: R.path(["actor", "name"], guide),
-        image: R.path(["payload", "media", "url"], guide),
         title: R.path(["payload", "title"], guide),
         tags: R.path(["tags"], guide)
       }),

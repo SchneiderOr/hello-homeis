@@ -6,7 +6,6 @@ import { createStore, applyMiddleware, compose } from "redux";
 
 // Middlewares
 import { middleware as reduxPackMiddleware } from "redux-pack";
-// import thunk from "redux-thunk";
 import { createLogger } from "redux-logger";
 
 // import api from "../helpers/fetch";
@@ -19,15 +18,7 @@ const configureStore = preloadedState => {
   const store = createStore(
     rootReducer,
     preloadedState,
-    compose(
-      applyMiddleware(
-        router,
-        reduxPackMiddleware,
-        // thunk,
-        //api,
-        logger
-      )
-    )
+    compose(applyMiddleware(router, reduxPackMiddleware, logger))
   );
 
   if (module.hot) {
