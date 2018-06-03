@@ -1,31 +1,13 @@
-import { compose, lifecycle, withProps } from "recompose";
+import { compose, lifecycle } from "recompose";
 import * as R from "ramda";
-import {
-  format,
-  distanceInWords,
-  formatDistance,
-  formatRelative,
-  subDays
-} from "date-fns";
+import { formatDistance } from "date-fns";
 
 import parse from "react-html-parser";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import { withStyles } from "@material-ui/core/styles";
-
 import { loadGuide } from "../reducers/guide";
 import Guide from "../components/Guide/guide";
-
-const styles = {
-  card: {
-    maxWidth: 480
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%" // 16:9
-  }
-};
 
 const getGuideData = state => {
   const guide = R.path(["guide", "payload", "data", "post"], state);
@@ -45,6 +27,7 @@ const getGuideData = state => {
       body: parse(R.path(["payload", "text"], guide))
     };
   }
+  return {};
 };
 
 export default compose(
@@ -55,9 +38,6 @@ export default compose(
     }),
     dispatch => ({ loadGuide: bindActionCreators(loadGuide, dispatch) })
   ),
-  withProps(ownProps => ({
-    styles
-  })),
   lifecycle({
     componentWillMount() {
       this.props.loadGuide();

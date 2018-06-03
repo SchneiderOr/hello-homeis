@@ -9,5 +9,5 @@ const calculateSize = css`
 export default styled.img`
   ${calculateSize};
   border-radius: ${props => props.radius};
+  background-size: contain;
 `;
-  // background: ${({ theme }) => theme.avatar.backgroundColor};

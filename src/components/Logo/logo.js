@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Image from "../Image/image";
 
 export default props => (
   <Link to="/">
-    <img alt="Homepage" src="/logo.png" />
+    <Image alt="Homepage" src="/logo.png" width="160px" />
   </Link>
 );

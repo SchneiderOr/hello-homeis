@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Header from "./components/Header/header";
-import "./App.css";
+import styled from "styled-components";
+import { Grid as BaseGrid } from "react-styled-flexboxgrid";
 
+import Header from "./components/Header/header";
+import Seperator from "./components/Separator/separator";
+
+const MainGrid = styled(BaseGrid)`padding: 32px 96px;`;
+const HeaderGrid = styled(BaseGrid)`padding: 32px 96px;`;
 class App extends Component {
   static contextTypes = {
     store: PropTypes.object.isRequired
@@ -10,9 +15,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header />
-        {this.props.children}
+      <div>
+        <HeaderGrid>
+          <Header />
+        </HeaderGrid>
+        <Seperator height="1px" />
+        <MainGrid>{this.props.children}</MainGrid>
       </div>
     );
   }

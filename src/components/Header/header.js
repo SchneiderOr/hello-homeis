@@ -2,19 +2,20 @@ import React from "react";
 import { navigation } from "../../config";
 import Link from "../Link/link";
 import Logo from "../Logo/logo";
-import "./header.css";
+
+import { Header } from "./style";
 
 const nav = navigation.map(({ to, label, ...rest }) => (
-  <Link key={label} to={to} {...rest}>
+  <Link key={label} to={to} {...rest} innerStyle={{ padding: "16px" }}>
     {label}
   </Link>
 ));
 
 export default props => (
-  <header className="container">
-    <div className="logo">
+  <Header>
+    <div>
       <Logo />
     </div>
-    <nav className="nav">{nav}</nav>
-  </header>
+    <nav>{nav}</nav>
+  </Header>
 );

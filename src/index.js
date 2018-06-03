@@ -13,19 +13,24 @@ import NotFound from "./components/NotFound";
 
 import registerServiceWorker from "./registerServiceWorker";
 
-import "./vars/main.css";
+import { ThemeProvider } from "styled-components";
+
+import theme from "./config/theme";
+import globalStyles from "./config/base-style";
 
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route component={NotFound} />
-        </Switch>
-      </App>
+      <ThemeProvider theme={theme}>
+        <App>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route component={NotFound} />
+          </Switch>
+        </App>
+      </ThemeProvider>
     </ConnectedRouter>
   </Provider>,
   document.getElementById("root")
